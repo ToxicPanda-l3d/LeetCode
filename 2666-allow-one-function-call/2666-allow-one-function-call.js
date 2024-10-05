@@ -3,18 +3,19 @@
  * @return {Function}
  */
 var once = function(fn) {
-    let called = false; // flag to check if the function has been called already
-    let result;         // variable to store the result of the first function call
-    
+    let hasBeenCalled = false; // Track if the function has been called
+    let result; // Store the result of the first call
+
     return function(...args) {
-        if (!called) {  // check if the function has not been called yet
-            called = true;     // mark the function as called
-            result = fn(...args);  // call the original function and store the result
-            return result;  // return the result of the first function call
+        if (!hasBeenCalled) {
+            hasBeenCalled = true; // Mark the function as called
+            result = fn.apply(this, args); // Call the original function
+            return result; // Return the result of the first call
         }
-        return undefined;   // for subsequent calls, return undefined
+        return undefined; // Return undefined for subsequent calls
     };
 };
+
 
 /**
  * let fn = (a,b,c) => (a + b + c)
