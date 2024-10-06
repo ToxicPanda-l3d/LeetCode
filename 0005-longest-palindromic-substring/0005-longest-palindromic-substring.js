@@ -2,24 +2,27 @@
  * @param {string} s
  * @return {string}
  */
-var longestPalindrome = function (s) {
-    const n = s.length;
-    const f = Array(n)
-        .fill(0)
-        .map(() => Array(n).fill(true));
-    let k = 0;
-    let mx = 1;
-    for (let i = n - 2; i >= 0; --i) {
-        for (let j = i + 1; j < n; ++j) {
-            f[i][j] = false;
-            if (s[i] === s[j]) {
-                f[i][j] = f[i + 1][j - 1];
-                if (f[i][j] && mx < j - i + 1) {
-                    mx = j - i + 1;
-                    k = i;
-                }
-            }
+var longestPalindrome = function(s) {
+    let start = 0, maxLen = 1;
+
+    const expandAroundCenter = (left, right) => {
+        while (left >= 0 && right < s.length && s[left] === s[right]) {
+            left--;
+            right++;
+        }
+        return right - left - 1; // The length of the palindrome
+    };
+
+    for (let i = 0; i < s.length; i++) {
+        let len1 = expandAroundCenter(i, i);      // Odd-length palindromes
+        let len2 = expandAroundCenter(i, i + 1);  // Even-length palindromes
+        let len = Math.max(len1, len2);
+        
+        if (len > maxLen) {
+            maxLen = len;
+            start = i - Math.floor((len - 1) / 2);
         }
     }
-    return s.slice(k, k + mx);
+
+    return s.slice(start, start + maxLen);
 };
