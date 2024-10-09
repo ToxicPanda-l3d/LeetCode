@@ -4,6 +4,7 @@
  * @param {number} t
  * @return {Function}
  */
+
 var cancellable = function(fn, args, t) {
     // Immediately call the function with the provided arguments
     fn(...args);
