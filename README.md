@@ -29,4 +29,16 @@ Feel free to explore, fork, and contribute!
 |  |
 | ------- |
 | [0005-longest-palindromic-substring](https://github.com/ToxicPanda-l3d/LeetCode/tree/master/0005-longest-palindromic-substring) |
+## Linked List
+|  |
+| ------- |
+| [0002-add-two-numbers](https://github.com/ToxicPanda-l3d/LeetCode/tree/master/0002-add-two-numbers) |
+## Math
+|  |
+| ------- |
+| [0002-add-two-numbers](https://github.com/ToxicPanda-l3d/LeetCode/tree/master/0002-add-two-numbers) |
+## Recursion
+|  |
+| ------- |
+| [0002-add-two-numbers](https://github.com/ToxicPanda-l3d/LeetCode/tree/master/0002-add-two-numbers) |
 <!---LeetCode Topics End-->
