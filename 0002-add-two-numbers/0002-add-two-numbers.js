@@ -43,6 +43,7 @@ var addTwoNumbers = function (l1, l2) {
         if (l2 !== null) l2 = l2.next;
     }
 
+    
     // Return the head of the result list, skipping the dummy node
     return dummyHead.next;
 };
