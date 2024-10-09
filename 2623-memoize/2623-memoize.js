@@ -2,6 +2,7 @@
  * @param {Function} fn
  * @return {Function}
  */
+
 function memoize(fn) {
     const cache = {};
 
