@@ -3,6 +3,7 @@
  * @param {Function} fn
  * @return {number[]}
  */
+
 function filter(arr, fn) {
     const filteredArr = []; // Initialize an empty array to store the filtered results
     for (let i = 0; i < arr.length; i++) { // Loop through each element in the array
