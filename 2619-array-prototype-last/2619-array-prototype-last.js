@@ -1,7 +1,6 @@
 /**
  * @return {null|boolean|number|string|Array|Object}
  */
-
 // Add the last() method to the Array prototype
 Array.prototype.last = function() {
     // Check if the array is empty
