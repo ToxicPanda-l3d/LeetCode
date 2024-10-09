@@ -3,6 +3,7 @@
  * @param {number} t milliseconds
  * @return {Function}
  */
+
 var debounce = function(fn, t = 1000) {
     let timer;
     return function(...args) {
