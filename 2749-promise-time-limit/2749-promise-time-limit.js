@@ -3,14 +3,11 @@
  * @param {number} t
  * @return {Function}
  */
-var timeLimit = function(fn, t) {
-    return async function(...args) {
-        return Promise.race([
-            fn(...args),
-            new Promise((_, reject) => setTimeout(() => reject('Time Limit Exceeded'), t))
-        ]);
-    };
-};;
+var timeLimit = (fn, t) => async (...args) => 
+    Promise.race([
+        fn(...args), 
+        new Promise((_, reject) => setTimeout(() => reject('Time Limit Exceeded'), t))
+    ]);
 
 /**
  * const limited = timeLimit((t) => new Promise(res => setTimeout(res, t)), 100);
