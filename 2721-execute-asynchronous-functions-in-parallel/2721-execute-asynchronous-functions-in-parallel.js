@@ -2,6 +2,7 @@
  * @param {Array<Function>} functions
  * @return {Promise<any>}
  */
+
 var promiseAll = async function(functions) {
     return new Promise((resolve, reject) => {
         // Handle empty functions array case
