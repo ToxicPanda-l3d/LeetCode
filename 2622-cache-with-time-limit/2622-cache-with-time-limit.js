@@ -9,7 +9,6 @@ var TimeLimitedCache = function() {
  * @param {number} duration time until expiration in ms
  * @return {boolean} if un-expired key already existed
  */
-
 TimeLimitedCache.prototype.set = function(key, value, duration) {
     const now = Date.now();
     const expiresAt = now + duration;
