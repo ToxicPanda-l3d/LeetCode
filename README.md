@@ -14,3 +14,19 @@ Welcome to my collection of LeetCode problems and solutions! I embarked on this 
 I believe that mastering problem-solving is a key skill for any software engineer, and LeetCode offers a fantastic platform to challenge and grow. By sharing my journey here, I hope to inspire and help others who are also starting out.
 
 Feel free to explore, fork, and contribute!
+
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Two Pointers
+|  |
+| ------- |
+| [0005-longest-palindromic-substring](https://github.com/ToxicPanda-l3d/LeetCode/tree/master/0005-longest-palindromic-substring) |
+## String
+|  |
+| ------- |
+| [0005-longest-palindromic-substring](https://github.com/ToxicPanda-l3d/LeetCode/tree/master/0005-longest-palindromic-substring) |
+## Dynamic Programming
+|  |
+| ------- |
+| [0005-longest-palindromic-substring](https://github.com/ToxicPanda-l3d/LeetCode/tree/master/0005-longest-palindromic-substring) |
+<!---LeetCode Topics End-->
