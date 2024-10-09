@@ -24,7 +24,6 @@ var lengthOfLongestSubstring = function(s) {
         ans = Math.max(ans, j - i + 1);
     }
 
-
     // Return the maximum length of substring without repeating characters.
     return ans;
 };
