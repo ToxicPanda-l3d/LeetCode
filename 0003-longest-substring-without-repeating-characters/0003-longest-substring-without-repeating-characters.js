@@ -23,7 +23,8 @@ var lengthOfLongestSubstring = function(s) {
         // The window size is the difference between 'j' and 'i' plus 1 (for the current character).
         ans = Math.max(ans, j - i + 1);
     }
-    
+
+
     // Return the maximum length of substring without repeating characters.
     return ans;
 };
