@@ -2,6 +2,7 @@
  * @param {Function} fn
  * @return {Function}
  */
+
 var once = function(fn) {
     let hasBeenCalled = false; // Track if the function has been called
     let result; // Store the result of the first call
