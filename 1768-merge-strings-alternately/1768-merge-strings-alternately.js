@@ -3,6 +3,7 @@
  * @param {string} word2
  * @return {string}
  */
+
 var mergeAlternately = function(word1, word2) {
     const ans = [];  // Create an empty array to store the merged characters
     const m = word1.length, n = word2.length;  // Get the lengths of both words
