@@ -27,3 +27,4 @@ class Solution {
         return str1.substring(0, gcdLength);
     }
 }
+
