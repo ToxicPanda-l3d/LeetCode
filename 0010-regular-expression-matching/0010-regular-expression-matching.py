@@ -1,19 +1,19 @@
-class Solution:
-    def isMatch(self, s: str, p: str) -> bool:
-        @cache
-        def dfs(i, j):
-            # If pattern is fully traversed, return True if the string is also fully traversed
-            if j >= n:
-                return i == m
-            
-            # If the next character in pattern is '*', handle zero or more occurrences
-            if j + 1 < n and p[j + 1] == '*':
-                return dfs(i, j + 2) or (
-                    i < m and (s[i] == p[j] or p[j] == '.') and dfs(i + 1, j)
-                )
-            
-            # Match current characters and move to the next
-            return i < m and (s[i] == p[j] or p[j] == '.') and dfs(i + 1, j + 1)
+class Solution(object):
+    def isMatch(self, text: str, pattern: str) -> bool:
+        memo = {}
 
-        m, n = len(s), len(p)
-        return dfs(0, 0)
+        def dp(i: int, j: int) -> bool:
+            if (i, j) not in memo:
+                if j == len(pattern):
+                    ans = i == len(text)
+                else:
+                    first_match = i < len(text) and pattern[j] in {text[i], "."}
+                    if j + 1 < len(pattern) and pattern[j + 1] == "*":
+                        ans = dp(i, j + 2) or first_match and dp(i + 1, j)
+                    else:
+                        ans = first_match and dp(i + 1, j + 1)
+
+                memo[i, j] = ans
+            return memo[i, j]
+
+        return dp(0, 0)
