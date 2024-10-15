@@ -1,33 +1,33 @@
-function isMatch(s, p) {
-    const m = s.length;
-    const n = p.length;
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {boolean}
+ */
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {boolean}
+ */
+var isMatch = function (s, p) {
+    const m = s.length; // Length of the string
+    const n = p.length; // Length of the pattern
+    const f = Array.from({ length: m + 1 }, () => Array(n + 1).fill(false)); // DP table
+    f[0][0] = true; // Empty string and empty pattern match
 
-    // Create a 1D array for dynamic programming
-    const dp = new Array(n + 1).fill(false);
-    dp[0] = true; // Base case: empty string matches empty pattern
-
-    // Initialize the dp array for patterns that can match an empty string
-    for (let j = 1; j <= n; j++) {
-        if (p[j - 1] === '*') {
-            dp[j] = dp[j - 2]; // '*' can represent zero occurrences of the preceding character
-        }
-    }
-
-    // Process each character in s
-    for (let i = 1; i <= m; i++) {
-        const prev = dp.slice(); // Copy the current state of dp
-        dp[0] = false; // An empty pattern can't match a non-empty string
-
-        for (let j = 1; j <= n; j++) {
-            if (p[j - 1] === s[i - 1] || p[j - 1] === '.') {
-                dp[j] = prev[j - 1]; // Direct match or '.'
-            } else if (p[j - 1] === '*') {
-                dp[j] = dp[j - 2] || (prev[j] && (s[i - 1] === p[j - 2] || p[j - 2] === '.'));
-            } else {
-                dp[j] = false; // No match
+    for (let i = 0; i <= m; ++i) {
+        for (let j = 1; j <= n; ++j) {
+            if (p[j - 1] === '*') {
+                // '*' can represent zero occurrences of the preceding element
+                f[i][j] = f[i][j - 2]; // Match zero occurrences
+                if (i && (p[j - 2] === '.' || p[j - 2] === s[i - 1])) {
+                    // Match one or more occurrences
+                    f[i][j] |= f[i - 1][j]; 
+                }
+            } else if (i && (p[j - 1] === '.' || p[j - 1] === s[i - 1])) {
+                // Characters match (or '.' wildcard) 
+                f[i][j] = f[i - 1][j - 1]; // Move diagonally in the DP table
             }
         }
     }
-
-    return dp[n]; // Final match result
-}
+    return f[m][n]; // Return the result for the full string and pattern
+};
