@@ -3,31 +3,29 @@
  * @param {string} p
  * @return {boolean}
  */
-/**
- * @param {string} s
- * @param {string} p
- * @return {boolean}
- */
-var isMatch = function (s, p) {
-    const m = s.length; // Length of the string
-    const n = p.length; // Length of the pattern
-    const f = Array.from({ length: m + 1 }, () => Array(n + 1).fill(false)); // DP table
-    f[0][0] = true; // Empty string and empty pattern match
+var isMatch = function(s, p) {
+    const m = s.length, n = p.length;
+    const dp = new Array(m+1).fill().map(() => new Array(n+1).fill(false));
+    dp[0][0] = true; // empty pattern matches empty string
 
-    for (let i = 0; i <= m; ++i) {
-        for (let j = 1; j <= n; ++j) {
-            if (p[j - 1] === '*') {
-                // '*' can represent zero occurrences of the preceding element
-                f[i][j] = f[i][j - 2]; // Match zero occurrences
-                if (i && (p[j - 2] === '.' || p[j - 2] === s[i - 1])) {
-                    // Match one or more occurrences
-                    f[i][j] |= f[i - 1][j]; 
-                }
-            } else if (i && (p[j - 1] === '.' || p[j - 1] === s[i - 1])) {
-                // Characters match (or '.' wildcard) 
-                f[i][j] = f[i - 1][j - 1]; // Move diagonally in the DP table
+    // initialize first row (empty string)
+    for (let j = 1; j <= n; j++) {
+        if (p[j-1] === '*')
+        dp[0][j] = dp[0][j-2];
+    }
+
+    // fill in remaining cells
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+        if (s[i-1] === p[j-1] || p[j-1] === '.') {
+            dp[i][j] = dp[i-1][j-1];
+        } else if (p[j-1] === '*') {
+            dp[i][j] = dp[i][j-2]; // zero occurrences
+            if (s[i-1] === p[j-2] || p[j-2] === '.') {
+            dp[i][j] = dp[i][j] || dp[i-1][j]; // one or more occurrences
             }
         }
+        }
     }
-    return f[m][n]; // Return the result for the full string and pattern
-};
+    return dp[m][n];
+}
