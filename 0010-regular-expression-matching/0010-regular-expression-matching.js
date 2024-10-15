@@ -1,23 +1,33 @@
 function isMatch(s, p) {
-    const dp = Array.from({ length: s.length + 1 }, () => Array(p.length + 1).fill(false));
-    dp[0][0] = true; // Empty string matches empty pattern
+    const m = s.length;
+    const n = p.length;
 
-    // Handle patterns that can match an empty string (e.g., a*, a*b*, etc.)
-    for (let j = 1; j <= p.length; j++) {
+    // Create a 1D array for dynamic programming
+    const dp = new Array(n + 1).fill(false);
+    dp[0] = true; // Base case: empty string matches empty pattern
+
+    // Initialize the dp array for patterns that can match an empty string
+    for (let j = 1; j <= n; j++) {
         if (p[j - 1] === '*') {
-            dp[0][j] = dp[0][j - 2];
+            dp[j] = dp[j - 2]; // '*' can represent zero occurrences of the preceding character
         }
     }
 
-    for (let i = 1; i <= s.length; i++) {
-        for (let j = 1; j <= p.length; j++) {
+    // Process each character in s
+    for (let i = 1; i <= m; i++) {
+        const prev = dp.slice(); // Copy the current state of dp
+        dp[0] = false; // An empty pattern can't match a non-empty string
+
+        for (let j = 1; j <= n; j++) {
             if (p[j - 1] === s[i - 1] || p[j - 1] === '.') {
-                dp[i][j] = dp[i - 1][j - 1];
+                dp[j] = prev[j - 1]; // Direct match or '.'
             } else if (p[j - 1] === '*') {
-                dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s[i - 1] === p[j - 2] || p[j - 2] === '.'));
+                dp[j] = dp[j - 2] || (prev[j] && (s[i - 1] === p[j - 2] || p[j - 2] === '.'));
+            } else {
+                dp[j] = false; // No match
             }
         }
     }
 
-    return dp[s.length][p.length];
+    return dp[n]; // Final match result
 }
