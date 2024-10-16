@@ -1,14 +1,12 @@
 class Solution {
     public String reverseWords(String s) {
-        String[] words = s.trim().split("\\s+");
-        StringBuilder ans = new StringBuilder();
-
-        for(int i = words.length - 1; i >= 0; i--){
-            ans.append(words[i]);
-            if(i != 0){
-                ans.append(" ");
-            }
-        }
-        return ans.toString();
+        // Split the string by one or more spaces and store the words in a list
+        List<String> words = Arrays.asList(s.trim().split("\\s+"));
+        
+        // Reverse the list of words
+        Collections.reverse(words);
+        
+        // Join the reversed words with a single space and return the result
+        return String.join(" ", words);
     }
 }
