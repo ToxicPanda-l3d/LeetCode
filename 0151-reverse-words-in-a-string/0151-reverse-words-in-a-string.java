@@ -5,4 +5,3 @@ class Solution {
         return String.join(" ", words);
     }
 }
-
