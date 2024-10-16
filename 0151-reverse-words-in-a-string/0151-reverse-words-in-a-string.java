@@ -10,7 +10,6 @@ class Solution {
                 result.append(" ");  // Add space between words
             }
         }
-        
         return result.toString();
     }
 }
