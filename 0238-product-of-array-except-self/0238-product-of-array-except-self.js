@@ -17,5 +17,6 @@ var productExceptSelf = function (nums) {
         ans[i] *= right;  // Multiply current value by right product
         right *= nums[i];  // Update right product
     }
+    
     return ans;  // Return the result array
 };
