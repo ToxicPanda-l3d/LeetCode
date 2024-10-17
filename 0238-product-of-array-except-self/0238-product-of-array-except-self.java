@@ -16,6 +16,7 @@ class Solution {
             ans[i] *= right;  // Multiply the stored left product with the right product
             right *= nums[i];  // Update the right product by multiplying with the current element
         }
+        
         // Return the result array which contains the product of all elements except self
         return ans;
     }
