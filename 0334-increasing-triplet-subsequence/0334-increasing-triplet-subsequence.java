@@ -1,4 +1,3 @@
-
 class Solution {
     public boolean increasingTriplet(int[] nums) {
         int n = nums.length;
