@@ -1,17 +1,12 @@
 class Solution:
-    def increasingTriplet(self, nums: List[int]) -> bool:
-        mi = inf
-        mid = inf
+    def increasingTriplet(self, nums: list[int]) -> bool:
         
-        for num in nums:
-            if num > mid:
-                # Found a number greater than mid, thus we have an increasing triplet
-                return True
-            elif num > mi:
-                # Found a number greater than mi but less than or equal to mid
-                mid = num
-            else:
-                # Update mi to the smallest number seen so far
-                mi = num
+        first, second = inf, inf
         
-        return False
+        for third in nums:
+            
+            if second < third: return True
+            if third <= first: first= third    
+            else:  second = third 
+                
+        return  False
