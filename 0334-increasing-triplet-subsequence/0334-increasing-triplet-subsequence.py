@@ -1,12 +1,11 @@
 class Solution:
-    def increasingTriplet(self, nums: list[int]) -> bool:
-        
-        first, second = inf, inf
-        
-        for third in nums:
-            
-            if second < third: return True
-            if third <= first: first= third    
-            else:  second = third 
-                
-        return  False
+    def increasingTriplet(self, nums: List[int]) -> bool:
+        mi, mid = inf, inf
+        for num in nums:
+            if num > mid:
+                return True
+            if num <= mi:
+                mi = num
+            else:
+                mid = num
+        return False
