@@ -1,7 +1,6 @@
 class Solution {
     public int compress(char[] chars) {
-        int i = 0, res = 0;  // i is the read pointer, res is the write pointer (final compressed array length)
-        
+        int i = 0, res = 0;  
         while (i < chars.length) {
             int groupLength = 1;  // Start with one character in the group
 
