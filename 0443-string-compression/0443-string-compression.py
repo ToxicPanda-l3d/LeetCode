@@ -24,4 +24,4 @@ class Solution:
             # Move i to the start of the next group
             i += group_length
 
-        return res  # array
+        return res  # Return the length of the compressed array
