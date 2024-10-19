@@ -1,20 +1,29 @@
 class Solution {
     public int compress(char[] chars) {
-        int k = 0, n = chars.length;  // k: write index, n: length of chars
-        for (int i = 0, j = i + 1; i < n;) {
-            // Find the end of the sequence of the same characters
-            while (j < n && chars[j] == chars[i]) {
-                ++j;
+        int i = 0, res = 0;  // i is the read pointer, res is the write pointer (final compressed array length)
+        
+        while (i < chars.length) {
+            int groupLength = 1;  // Start with one character in the group
+
+            // Count consecutive characters that are the same
+            while (i + groupLength < chars.length && chars[i + groupLength] == chars[i]) {
+                groupLength++;  // Increment the group length if characters match
             }
-            chars[k++] = chars[i];  // Write the character
-            if (j - i > 1) {  // If there is more than one occurrence
-                String cnt = String.valueOf(j - i);  // Convert count to string
-                for (char c : cnt.toCharArray()) {
-                    chars[k++] = c;  // Write each digit of the count
+
+            // Write the character at res
+            chars[res++] = chars[i];
+
+            // If there is more than one occurrence, write the count as well
+            if (groupLength > 1) {
+                for (char c : Integer.toString(groupLength).toCharArray()) {
+                    chars[res++] = c;  // Write each digit of the count
                 }
             }
-            i = j;  // Move to the next group of characters
+
+            // Move i to the start of the next group of characters
+            i += groupLength;
         }
-        return k;  // Return the length of the compressed array
+        
+        return res;  // Return the length of the compressed array
     }
 }
