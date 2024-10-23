@@ -24,3 +24,4 @@ class Solution {
         return ans; // Return the total number of valid pairs
     }
 }
+
