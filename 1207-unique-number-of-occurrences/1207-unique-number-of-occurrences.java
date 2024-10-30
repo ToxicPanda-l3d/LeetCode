@@ -5,7 +5,6 @@ class Solution {
         for (int x : arr) {
             cnt.merge(x, 1, Integer::sum);
         }
-        
         // Check if all occurrence counts are unique
         return new HashSet<>(cnt.values()).size() == cnt.size();
     }
