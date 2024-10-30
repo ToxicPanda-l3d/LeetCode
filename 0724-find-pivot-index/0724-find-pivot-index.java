@@ -1,5 +1,3 @@
-// Runtime: 1 ms, faster than 92.94% of Java online submissions for Find Pivot Index.
-// Time Complexity : O(n)
 class Solution {
     public int pivotIndex(int[] nums) {
         // Initialize total sum of the given array...
